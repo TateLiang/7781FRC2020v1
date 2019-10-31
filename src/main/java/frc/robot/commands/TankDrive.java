@@ -27,10 +27,17 @@ public class TankDrive extends Command {
   @Override
   protected void execute() {
     double leftStickY = Robot.m_oi.GetStickRawAxis(RobotMap.LEFT_STICK_Y);
-    double leftStickX = Robot.m_oi.GetStickRawAxis(RobotMap.LEFT_STICK_X);
+    double rightStickY = Robot.m_oi.GetStickRawAxis(RobotMap.RIGHT_STICK_Y);
+
+    Robot.driveTrain.setLeftMotors(leftStickY);
+    Robot.driveTrain.setRightMotors(rightStickY);
+
+    Robot.driveTrain.setLeftMotors(leftStickY);
+    Robot.driveTrain.setRightMotors(rightStickY);
   }
 
   // Make this return true when this Command no longer needs to run execute()
+  // called every time after execute
   @Override
   protected boolean isFinished() {
     return false;
@@ -39,11 +46,14 @@ public class TankDrive extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    Robot.driveTrain.setLeftMotors(0);
+    Robot.driveTrain.setRightMotors(0);
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
+    this.end();
   }
 }
