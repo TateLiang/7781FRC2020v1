@@ -7,7 +7,7 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.XboxController;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -15,7 +15,7 @@ import edu.wpi.first.wpilibj.Joystick;
  */
 public class OI {
 
-  private Joystick stick = new Joystick(RobotMap.JOYSTICK_CONTROLLER);
+  XboxController stick = new XboxController(RobotMap.DRIVER_CONTROLLER);
 
   // get current value of the controller axis
   public double GetStickRawAxis(int axis) {

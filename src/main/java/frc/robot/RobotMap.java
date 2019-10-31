@@ -19,7 +19,10 @@ public class RobotMap {
 	public static final int RIGHT_MOTOR_2_ID = 5;
 	public static final int LEFT_MOTOR_1_ID = 3;
   public static final int LEFT_MOTOR_2_ID = 4;
-  public static final int JOYSTICK_CONTROLLER = 0;
+
+  public static final int DRIVER_CONTROLLER = 0;
+  public static final int LEFT_STICK_Y = 0;
+  public static final int LEFT_STICK_X = 0;
   
 
   // For example to map the left and right motors, you could define the
