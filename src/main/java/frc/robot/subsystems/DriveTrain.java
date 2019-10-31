@@ -28,6 +28,7 @@ public class DriveTrain extends Subsystem {
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
+    // default commands always run no matter what
     setDefaultCommand(new TankDrive()); // always make a new instance of the command
   }
 
