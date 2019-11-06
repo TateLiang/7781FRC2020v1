@@ -7,11 +7,7 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.XboxController;
-import edu.wpi.first.wpilibj.buttons.Button;
-import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import frc.robot.commands.Move;
-import frc.robot.commands.MoveSequence;
+import edu.wpi.first.wpilibj.Joystick;;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -19,9 +15,9 @@ import frc.robot.commands.MoveSequence;
  */
 public class OI {
 
-  XboxController stick = new XboxController(RobotMap.DRIVER_CONTROLLER);
-  Button xButton = new JoystickButton(stick, RobotMap.BUTTON_X);
-  Button yButton = new JoystickButton(stick, RobotMap.BUTTON_Y);
+  Joystick stick = new Joystick(RobotMap.JOYSTICK);
+  //Button xButton = new JoystickButton(stick, RobotMap.BUTTON_X);
+  //Button yButton = new JoystickButton(stick, RobotMap.BUTTON_Y);
 
   // get current value of the controller axis
   public double GetStickRawAxis(int axis) {
@@ -29,8 +25,8 @@ public class OI {
   }
 
   public OI() {
-    xButton.whenPressed(new Move(2, 0.5, 0.5));
-    xButton.whenPressed(new MoveSequence());
+    //xButton.whenPressed(new Move(2, 0.5, 0.5));
+    //xButton.whenPressed(new MoveSequence());
   }
   //// CREATING BUTTONS
   // One type of button is a joystick button which is any button on a
