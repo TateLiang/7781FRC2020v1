@@ -26,14 +26,17 @@ public class TankDrive extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    double leftStickY = Robot.m_oi.GetStickRawAxis(RobotMap.LEFT_STICK_Y);
-    double rightStickY = Robot.m_oi.GetStickRawAxis(RobotMap.RIGHT_STICK_Y);
+    double joyStickY = Robot.m_oi.GetStickRawAxis(RobotMap.JOYSTICK_Y);
+    //double leftStickY = Robot.m_oi.GetStickRawAxis(RobotMap.LEFT_STICK_Y);
+    //double rightStickY = Robot.m_oi.GetStickRawAxis(RobotMap.RIGHT_STICK_Y);
 
-    Robot.driveTrain.setLeftMotors(leftStickY);
-    Robot.driveTrain.setRightMotors(rightStickY);
+    Robot.driveTrain.setLeftMotors(joyStickY);
+    Robot.driveTrain.setRightMotors(joyStickY);
+    //Robot.driveTrain.setLeftMotors(leftStickY);
+    //Robot.driveTrain.setRightMotors(rightStickY);
 
-    Robot.driveTrain.setLeftMotors(leftStickY);
-    Robot.driveTrain.setRightMotors(rightStickY);
+    //Robot.driveTrain.setLeftMotors(leftStickY);
+    //Robot.driveTrain.setRightMotors(rightStickY);
   }
 
   // Make this return true when this Command no longer needs to run execute()
