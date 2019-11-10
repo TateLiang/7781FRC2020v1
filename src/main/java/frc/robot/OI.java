@@ -16,12 +16,13 @@ import edu.wpi.first.wpilibj.Joystick;;
 public class OI {
 
   Joystick stick = new Joystick(RobotMap.JOYSTICK);
-  //Button xButton = new JoystickButton(stick, RobotMap.BUTTON_X);
-  //Button yButton = new JoystickButton(stick, RobotMap.BUTTON_Y);
 
-  // get current value of the controller axis
-  public double GetStickRawAxis(int axis) {
-    return stick.getRawAxis(axis);
+  public double getStickY() {
+    return stick.getY();
+  }
+
+  public double getStickTwist() {
+    return stick.getTwist();
   }
 
   public OI() {
