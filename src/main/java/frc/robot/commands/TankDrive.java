@@ -25,10 +25,10 @@ public class TankDrive extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    double joyStickY = Robot.m_oi.getStickY();
-    double stickTwist = Robot.m_oi.getStickTwist();
+    double joystickY = Robot.m_oi.getStickY();
+    double stickTwist = -Robot.m_oi.getStickTwist();
 
-    Robot.driveTrain.arcadeDrive(joyStickY, stickTwist);
+    Robot.driveTrain.arcadeDrive(joystickY, stickTwist);
   }
 
   // Make this return true when this Command no longer needs to run execute()
