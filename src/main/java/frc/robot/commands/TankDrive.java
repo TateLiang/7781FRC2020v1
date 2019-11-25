@@ -25,8 +25,8 @@ public class TankDrive extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    double joystickY = Robot.m_oi.getStickY();
-    double stickTwist = -Robot.m_oi.getStickTwist();
+    double joystickY = Deadband(Robot.m_oi.getStickY());
+    double stickTwist = Deadband(-Robot.m_oi.getStickTwist());
 
     Robot.driveTrain.arcadeDrive(joystickY, stickTwist);
   }
@@ -51,4 +51,17 @@ public class TankDrive extends Command {
   protected void interrupted() {
     this.end();
   }
+
+	double Deadband(double value) {
+		/* Upper deadband */
+		if (value >= +0.075) 
+			return value;
+		
+		/* Lower deadband */
+		if (value <= -0.075)
+			return value;
+		
+		/* Outside deadband */
+		return 0;
+	}
 }
