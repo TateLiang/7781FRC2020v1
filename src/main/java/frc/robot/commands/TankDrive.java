@@ -29,6 +29,7 @@ public class TankDrive extends Command {
     double stickTwist = Deadband(-Robot.m_oi.getStickTwist());
 
     Robot.driveTrain.arcadeDrive(stickTwist, joystickY);
+    //Robot.driveTrain.setRightMotors(joystickY);
   }
 
   // Make this return true when this Command no longer needs to run execute()

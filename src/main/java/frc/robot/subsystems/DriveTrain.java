@@ -42,16 +42,23 @@ public class DriveTrain extends Subsystem {
     rightMotor1.configFactoryDefault();
     rightMotor2.configFactoryDefault();
 
+
     leftMotor2.follow(leftMotor1);
     rightMotor2.follow(rightMotor1);
 
     // Set neutral mode
     leftMotor1.setNeutralMode(NeutralMode.Brake);
-    leftMotor2.setNeutralMode(NeutralMode.Brake);
+    rightMotor1.setNeutralMode(NeutralMode.Brake);
 
     //adjust directionality
     leftMotor1.setInverted(false);
-    leftMotor2.setInverted(true);
+    rightMotor1.setInverted(true);
+    
+    leftMotor2.setInverted(false);
+    rightMotor2.setInverted(true);
+
+    
+
   }
 
   public void arcadeDrive(double turn, double forward) {
