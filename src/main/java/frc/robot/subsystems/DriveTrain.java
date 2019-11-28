@@ -11,7 +11,6 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
-import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import frc.robot.RobotMap;
@@ -27,10 +26,7 @@ public class DriveTrain extends Subsystem {
   private WPI_TalonSRX rightMotor1 = new WPI_TalonSRX(RobotMap.RIGHT_MOTOR_1_ID);
   private WPI_TalonSRX rightMotor2 = new WPI_TalonSRX(RobotMap.RIGHT_MOTOR_1_ID);
 
-  SpeedControllerGroup leftMotors = new SpeedControllerGroup(leftMotor1, leftMotor2);
-  SpeedControllerGroup rightMotors = new SpeedControllerGroup(rightMotor1, rightMotor2);
-
-  DifferentialDrive drive = new DifferentialDrive(leftMotors, rightMotors);
+  DifferentialDrive drive = new DifferentialDrive(leftMotor1, rightMotor1);
 
   @Override
   public void initDefaultCommand() {
@@ -46,32 +42,31 @@ public class DriveTrain extends Subsystem {
     rightMotor1.configFactoryDefault();
     rightMotor2.configFactoryDefault();
 
+    leftMotor2.follow(leftMotor1);
+    rightMotor2.follow(rightMotor1);
+
     // Set neutral mode
     leftMotor1.setNeutralMode(NeutralMode.Brake);
     leftMotor2.setNeutralMode(NeutralMode.Brake);
-    rightMotor1.setNeutralMode(NeutralMode.Brake);
-    rightMotor2.setNeutralMode(NeutralMode.Brake);
 
     //adjust directionality
-    leftMotor1.setInverted(true);
+    leftMotor1.setInverted(false);
     leftMotor2.setInverted(true);
-    rightMotor1.setInverted(true);
-    rightMotor2.setInverted(true);
   }
 
-  public void arcadeDrive(double forward, double turn) {
-    drive.arcadeDrive(forward, turn);
+  public void arcadeDrive(double turn, double forward) {
+    drive.arcadeDrive(turn, forward);
   }
 
-  public void setLeftMotors(double speed) {
+  public void setLeftMotors(double speed) {   
     //make one side reversed
     leftMotor1.set(ControlMode.PercentOutput, -speed);
-    leftMotor2.set(ControlMode.PercentOutput, -speed);
+    //leftMotor2.set(ControlMode.PercentOutput, -speed);
   }
 
   public void setRightMotors(double speed) {
     rightMotor1.set(ControlMode.PercentOutput, speed);
-    rightMotor2.set(ControlMode.PercentOutput, speed);
+    //rightMotor2.set(ControlMode.PercentOutput, speed);
   }
 
 
