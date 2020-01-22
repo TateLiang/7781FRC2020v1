@@ -6,10 +6,14 @@
 /*----------------------------------------------------------------------------*/
 
 package frc.robot;
+import com.revrobotics.*;
 
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import frc.robot.subsystems.DriveTrain;
+import edu.wpi.first.wpilibj.I2C;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -26,11 +30,36 @@ public class Robot extends TimedRobot {
    * This function is run when the robot is first started up and should be
    * used for any initialization code.
    */
+  /**
+   * Change the I2C port below to match the connection of your color sensor
+   */
+  private final I2C.Port i2cPort = I2C.Port.kOnboard;
+
+  /**
+   * A Rev Color Sensor V3 object is constructed with an I2C port as a 
+   * parameter. The device will be automatically initialized with default 
+   * parameters.
+   */
+  /**
+   * A Rev Color Sensor V3 object is constructed with an I2C port as a 
+   * parameter. The device will be automatically initialized with default 
+   * parameters.
+   */
+  private final ColorSensorV3 m_colorSensor = new ColorSensorV3(i2cPort);
+  /**
+   * Note: Any example colors should be calibrated as the user needs, these
+   * are here as a basic example.
+   */
+  
+
+
+
+
   @Override
   public void robotInit() {
     m_oi = new OI();
   }
-
+  
   /**
    * This function is called every robot packet, no matter the mode. Use
    * this for items like diagnostics that you want ran during disabled,
@@ -41,13 +70,45 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
-  }
+  
+  
 
   /**
-   * This function is called once each time the robot enters Disabled mode.
-   * You can use it to reset any subsystem information you want to clear when
-   * the robot is disabled.
+   * The sensor returns a raw IR value of the infrared light detected.
    */
+ //double IR = m_colorSensor.getIR();
+
+  /**
+   * Open Smart Dashboard or Shuffleboard to see the color detected by the 
+   * sensor.
+   */
+  
+
+  /**
+   * In addition to RGB IR values, the color sensor can also return an 
+   * infrared proximity value. The chip contains an IR led which will emit
+   * IR pulses and measure the intensity of the return. When an object is 
+   * close the value of the proximity will be large (max 2047 with default
+   * settings) and will approach zero when the object is far away.
+   * 
+   * Proximity can be used to roughly approximate the distance of an object
+   * or provide a threshold for when an object is close enough to provide
+   * accurate color values.
+   */
+ 
+
+
+    /**
+     * The method GetColor() returns a normalized color value from the sensor and can be
+     * useful if outputting the color to an RGB LED or similar. To
+     * read the raw color, use GetRawColor().
+     * 
+     * The color sensor works best when within a few inches from an object in
+     * well lit conditions (the built in LED is a big help here!). The farther
+     * an object is the more light from the surroundings will bleed into the 
+     * measurements and make it difficult to accurately determine its color.
+     */
+  }
   @Override
   public void disabledInit() {
   }

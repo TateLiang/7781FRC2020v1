@@ -7,10 +7,19 @@
 
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.I2C;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
+
+
+
+
+
+
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import frc.robot.RobotMap;
@@ -20,12 +29,23 @@ import frc.robot.commands.TankDrive;
  * Add your docs here.
  */
 public class DriveTrain extends Subsystem {
-
+/*
   private WPI_TalonSRX leftMotor1 = new WPI_TalonSRX(RobotMap.LEFT_MOTOR_1_ID);
   private WPI_TalonSRX leftMotor2 = new WPI_TalonSRX(RobotMap.LEFT_MOTOR_1_ID);
   private WPI_TalonSRX rightMotor1 = new WPI_TalonSRX(RobotMap.RIGHT_MOTOR_1_ID);
   private WPI_TalonSRX rightMotor2 = new WPI_TalonSRX(RobotMap.RIGHT_MOTOR_1_ID);
-
+*/
+  // Initiate Motor Variables
+  // Declare TalonSRX motor #3
+  private WPI_TalonSRX leftMotor1 = new WPI_TalonSRX(3);
+  // Declare VictorSPX motor #4
+  private WPI_VictorSPX  leftMotor2 = new WPI_VictorSPX(4);
+  // Declare TalonSRX motor #6
+  private WPI_TalonSRX rightMotor1 = new WPI_TalonSRX(6);
+  // Declare VictorSPX motor #5
+  private WPI_VictorSPX  rightMotor2 = new WPI_VictorSPX(5);
+  
+  
   DifferentialDrive drive = new DifferentialDrive(leftMotor1, rightMotor1);
 
   @Override
@@ -51,11 +71,11 @@ public class DriveTrain extends Subsystem {
     rightMotor1.setNeutralMode(NeutralMode.Brake);
 
     //adjust directionality
-    leftMotor1.setInverted(false);
-    rightMotor1.setInverted(true);
+    leftMotor1.setInverted(true);
+    rightMotor1.setInverted(false);
     
-    leftMotor2.setInverted(false);
-    rightMotor2.setInverted(true);
+    leftMotor2.setInverted(true);
+    rightMotor2.setInverted(false);
 
     
 
